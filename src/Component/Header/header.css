@@ -1,0 +1,137 @@
+/* Basic Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.navbar__logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.navbar__links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+ 
+
+}
+
+.navbar__link {
+    text-decoration: none;
+    color: #555;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  
+}
+
+.navbar__link:hover {
+    color: #000;
+}
+
+/* Toggle button styles */
+.navbar__toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.navbar__toggle-line {
+    width: 25px;
+    height: 3px;
+    background-color: #000;
+    margin: 4px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar__toggle {
+        display: flex;
+    }
+
+    .navbar__links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        align-items: center;
+        background-color: #fff;
+        width: 100%;
+        padding: 10px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar__links--open {
+        display: flex;
+    }
+
+    .navbar__link {
+        padding: 10px;
+        border-bottom: 1px solid #eaeaea;
+        text-align: center;
+    }
+
+    .navbar__link:last-child {
+        border-bottom: none;
+    }
+}
+
+.Search__bar {
+    position: relative; /* Position the container relatively for absolute positioning inside it */
+    display: flex;
+    align-items: center; /* Center the items vertically */
+ /* Ensure the container takes full width */
+   left: 3%;
+  }
+  
+  .search-input {
+    padding-left: 2.5rem; /* Add space for the icon */
+  /* Full width of the container */
+    height: 2rem; /* Set a fixed height */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+    border: 1px solid #ccc; /* Add a border for better visualization */
+    border-radius: 4px; /* Optional: Add border-radius for rounded corners */
+  }
+  
+  .search__icon {
+    position: absolute; /* Position the icon absolutely inside the container */
+    left: 0.75rem; /* Adjust as needed */
+    font-size: 1.2rem; /* Adjust size of the icon */
+    color: #888; /* Adjust color as needed */
+    pointer-events: none; /* Ensure the icon does not block interactions with the input */
+    top: 50%; /* Center the icon vertically */
+    transform: translateY(-50%); /* Adjust for vertical centering */
+
+  }
+
+  .icon-container {
+    display: flex; /* Arrange icons horizontally */
+    align-items: center; /* Align items vertically centered */
+    gap: 1rem; /* Space between icons */
+    padding: 10px;
+  }
+  
+  .icon-wrapper {
+    display: flex; /* Center the icon within its wrapper */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Change cursor to pointer on hover */
+  }
+  
+  .cart-icon {
+    /* Specific styles for cart icon if needed */
+    position: relative;
+    left: 20%;
+  }
+  
+  .favorite-icon {
+    /* Specific styles for favorite icon if needed */
+    position: relative;
+    left: 20%;
+  }

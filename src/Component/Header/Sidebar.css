@@ -1,0 +1,30 @@
+.sidebar {
+    width: 250px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    font-family: Arial, sans-serif;
+    border-right: 1px solid #ddd;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 10px 0;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sidebar ul li:hover {
+    color: #000;
+  }
+  
+  .arrow {
+    font-weight: bold;
+  }
+  
