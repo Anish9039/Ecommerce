@@ -5,7 +5,7 @@ import { CiShoppingCart } from "react-icons/ci";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import Ribbon from './ribbon';
 import Sidebar from './Sidebar';
-
+import Banner from './Banner';
 
 
 
@@ -35,9 +35,24 @@ export default function Header() {
       "Health & Beauty",
     ];
 
+    const bannerData = {
+      logo:"https://i.ibb.co/fxJxzDH/0-02-03-4ec24aefd0a7bb4c6ec6956a0dc0019c4224bb9f10f866a0f7029861df30c7ed-d018eb042fbbd2ac.jpg", // Placeholder logo URL
+      series: "iPhone 14 Series",
+      offer: "Up to 10% off Voucher",
+      link: "/shop",
+      image: "/", // Placeholder product image URL
+      pagination: [
+        { active: false },
+        { active: false },
+        { active: true },
+        { active: false },
+      ],
+    };
+
     return (
       <div>
         <Ribbon />
+        
         
        
         <nav className="navbar">
@@ -87,9 +102,9 @@ export default function Header() {
 
         </nav>
 
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', margin: '7px' }}>
       <Sidebar categories={categories} />
-      {/* <Banner bannerData={bannerData} /> */}
+      <Banner bannerData={bannerData} />
     </div>
 
         </div>

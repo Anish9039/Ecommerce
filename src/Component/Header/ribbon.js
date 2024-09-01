@@ -1,4 +1,3 @@
-
 import './ribbon.css'; // Create this file for styling
 import React, { useState, useEffect } from "react";
 
@@ -35,12 +34,15 @@ const Ribbon = () => {
         <a href="/shop" className="shop-now">Shop Now</a>
       </div>
     
-      <div onClick={toggleDropdown} className="language-selector">
+      <div className="language-selector">
+      <div onClick={toggleDropdown}>
         {selectedCountry} <span className="dropdown-icon">▼</span>
-   
+      </div>
       {isOpen && (
         <ul className="dropdown">
-          {countries.map((country, index) => (
+          {loading && <li>Loading...</li>}
+          {error && <li>Error loading countries</li>}
+          {!loading && !error && countries.map((country, index) => (
             <li
               key={index}
               onClick={() => handleCountrySelect(country)}

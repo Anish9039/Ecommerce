@@ -1,0 +1,122 @@
+.product-card {
+  position: relative; /* Required for positioning icons */
+  flex: 1 1 calc(25% - 20px); /* Each card takes up 25% width on larger screens */
+  box-sizing: border-box;
+  margin-bottom: 20px; /* Adds spacing at the bottom */
+  background-color: #fff; /* Background color for each product card */
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .product-image-container {
+    position: relative;
+  }
+  
+  .product-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    transition: opacity 0.3s;
+  }
+  
+  .add-to-cart-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .icon-btn {
+    position: absolute;
+    bottom: 200px;
+    left: 90%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .icon-btn2 {
+    position: absolute;
+    bottom: 150px;
+    left: 90%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  
+
+  .product-image-container:hover .icon-btn {
+    opacity: 1;
+  }
+
+  
+  .product-image-container:hover .add-to-cart-btn {
+    opacity: 1;
+  }
+  
+  .product-image-container:hover .icon-btn2{
+    opacity: 1;
+  }
+  
+  
+  .product-info {
+    padding-top: 15px;
+  }
+  
+  .price {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .discounted-price {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .original-price {
+    text-decoration: line-through;
+    color: gray;
+    margin-left: 10px;
+  }
+  
+  .rating {
+    color: gold;
+  }
+  
+  .discount-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  

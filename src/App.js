@@ -1,5 +1,6 @@
 import './App.css';
 import Header from './Component/Header/header';
+import FlashSalesCarousel from './Component/Product/FlashSalesCarousel'
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
    <div>
 
    < Header/>
+   <FlashSalesCarousel/>
 
    </div>
   );

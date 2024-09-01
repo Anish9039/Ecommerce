@@ -1,0 +1,25 @@
+.product-carousel {
+    padding: 20px;
+    background-color: #f8f8f8;
+  }
+  
+  .view-all-button {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .view-all-button button {
+    background-color: red;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .fav{
+    padding-left: 5px;
+    margin: 5px;
+
+  }
+  
