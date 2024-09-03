@@ -1,21 +1,20 @@
 import React from 'react';
 import Slider from "react-slick";
 import ProductCard from './ProductCard';
-import './FlashSalesCarousel.css';
+
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
 
 const ProductCarousel = () => {
   const settings = {
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-   
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
   };
 
   const products = [
@@ -30,7 +29,7 @@ const ProductCarousel = () => {
     
     <div className="product-carousel">
  
-      <Slider {...settings}>
+      <Slider {...settings}> 
         {products.map(product => (
           <ProductCard key={product.id} product={product} />
         ))}

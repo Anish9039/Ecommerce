@@ -20,6 +20,7 @@ export default function Header() {
         { name: "Home", link: "/" },
         { name: "Contact", link: "/contact" },
         { name: "About", link: "/about" },
+        { name: "Admin", link: "/Aadmin" },
         { name: "Sign Up", link: "/signup" }
     ];
 
@@ -50,11 +51,9 @@ export default function Header() {
     };
 
     return (
-      <div>
+      <div className='container'>
         <Ribbon />
         
-        
-       
         <nav className="navbar">
             <div className="navbar__logo">Exclusive</div>
             <div className="navbar__toggle" onClick={toggleMenu}>

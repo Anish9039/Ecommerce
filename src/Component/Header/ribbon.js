@@ -2,11 +2,16 @@ import './ribbon.css'; // Create this file for styling
 import React, { useState, useEffect } from "react";
 
 
+
 const Ribbon = () => {
 
     const [countries, setCountries] = useState([]);
     const [selectedCountry, setSelectedCountry] = useState("English");
     const [isOpen, setIsOpen] = useState(false);
+
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [data, setData] = useState(null);
 
     useEffect(() => {
         fetch("https://restcountries.com/v3.1/all") // Example API endpoint
