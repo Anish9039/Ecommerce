@@ -4,7 +4,7 @@ import FlashSalesCarousel from './Component/Product/FlashSalesCarousel';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Aadmin from './Component/Admin/Aadmin';
 import ProductForms from './Component/Admin/ProductForm';
-
+import Redicon from './Component/product Category/redIcon';
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
             <>
               <Header />
               <FlashSalesCarousel />
+              < Redicon />
             </>
           }
         />

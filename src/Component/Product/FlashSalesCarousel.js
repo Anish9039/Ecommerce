@@ -7,6 +7,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 
 const ProductCarousel = () => {
+
+
   const settings = {
     dots: true,
     infinite: true,
@@ -26,7 +28,7 @@ const ProductCarousel = () => {
   ];
 
   return (
-    
+    <div class="container">
     <div className="product-carousel">
  
       <Slider {...settings}> 
@@ -37,6 +39,7 @@ const ProductCarousel = () => {
       <div className="view-all-button">
         <button>View All Products</button>
       </div>
+    </div>
     </div>
   );
 }
