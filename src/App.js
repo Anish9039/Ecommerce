@@ -3,8 +3,12 @@ import Header from './Component/Header/header';
 import FlashSalesCarousel from './Component/Product/FlashSalesCarousel';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Aadmin from './Component/Admin/Aadmin';
-import ProductForms from './Component/Admin/ProductForm';
 import Redicon from './Component/product Category/redIcon';
+import Redicons from './Component/product Category/redicons';
+import Productp from './Component/Popularproduct/Productp';
+import Banner from './Component/Popularproduct/banner';
+import Signup from './Component/signup/signup';
+import Globalheader from './Component/Header/globalheader'
 
 function App() {
   return (
@@ -13,6 +17,13 @@ function App() {
       <Routes>
         {/* Route for the admin screen */}
         <Route path="/aadmin" element={<Aadmin />} />
+        <Route path="/Signup" element={
+          <>
+            <Globalheader />
+          <Signup />
+          </>
+
+          } />
 
         {/* Routes for other parts of the app with Header and other components */}
         <Route
@@ -20,8 +31,13 @@ function App() {
           element={
             <>
               <Header />
+              
               <FlashSalesCarousel />
               < Redicon />
+              < Redicons />
+              < Productp />
+              <Banner  />
+      
             </>
           }
         />
