@@ -6,8 +6,7 @@ import { IoSearch } from "react-icons/io5";
 import { CiShoppingCart } from "react-icons/ci";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import Ribbon from './ribbon';
-import Sidebar from './Sidebar';
-import Banner from './Banner';
+
 
 
 
@@ -104,8 +103,7 @@ export default function Header() {
         </nav>
 
         <div style={{ display: 'flex', margin: '7px' }}>
-      <Sidebar categories={categories} />
-      <Banner bannerData={bannerData} />
+ 
     </div>
 
         </div>

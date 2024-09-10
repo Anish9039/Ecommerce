@@ -13,7 +13,7 @@ const catageory = () => {
 
 
     
-    <div className='grid grid-cols sm:grid-cols-5 gap-3  ' >
+    <div className='grid grid-cols sm:grid-cols-5 gap-[-44px]  ' >
      <div className=" border rounded-1xl	 h-41	 w-40  p-5 m-5  hover:text-red-600	 ">
      <CiMobile3 style={{width: "100px", height: "100px"}} />
   
