@@ -51,7 +51,7 @@ export default function Header() {
     };
 
     return (
-      <div className='container'>
+      <div className=''>
         <Ribbon />
         
         <nav className="navbar">

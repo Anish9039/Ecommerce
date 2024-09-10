@@ -28,7 +28,7 @@ const ProductCarousel = () => {
   ];
 
   return (
-    <div class="container">
+    <div class="">
     <div className="product-carousel">
  
       <Slider {...settings}> 
