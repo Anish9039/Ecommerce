@@ -1,10 +1,6 @@
-'use server'
-
 import React from 'react'
-import { FaGoogle } from "react-icons/fa";
 
-
-const signup = () => {
+const login = () => {
   return (
 <div class=" bg-slate-200 grid xl:grid-cols-2 gap-2 p-3">
 
@@ -77,4 +73,4 @@ const signup = () => {
   )
 }
 
-export default signup
+export default login
