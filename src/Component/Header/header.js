@@ -1,5 +1,3 @@
-"use server"
-
 import React, { useState } from 'react';
 import './header.css'; // External CSS file
 import { IoSearch } from "react-icons/io5";
@@ -23,7 +21,8 @@ export default function Header() {
         { name: "Contact", link: "/contact" },
         { name: "About", link: "/about" },
         { name: "Admin", link: "/Aadmin" },
-        { name: "Sign Up", link: "/signup" }
+        { name: "Sign Up", link: "/signup" },
+        { name: "login", link: "/login" }
     ];
 
     const categories = [
@@ -104,8 +103,7 @@ export default function Header() {
         </nav>
 
         <div style={{ display: 'flex', margin: '7px' }}>
-      <Sidebar categories={categories} />
-      <Banner bannerData={bannerData} />
+  
     </div>
 
         </div>

@@ -1,4 +1,6 @@
 import React from 'react'
+import { FaGoogle } from "react-icons/fa";
+
 
 const login = () => {
   return (
@@ -49,9 +51,6 @@ const login = () => {
 
     </form>
 
-<div className='  bg-red-600 h-10 block mb-3 '>
-    <button className=" justify-center ml-[80px] p-2 font-mono	text-white		 ">Create Account</button>
-    </div>
 
     <div className="bg-slate-50 h-10 flex items-center border border-black ">
   <button className="flex items-center justify-center ml-[60px] p-2 font-mono">
@@ -61,7 +60,6 @@ const login = () => {
   
 </div>
 
-<div className='mt-2' >Already Have an Account? <span className='underline underline-offset-1 cursor-pointer		 ' >Login</span></div>
 
 
 

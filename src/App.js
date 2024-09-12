@@ -31,7 +31,8 @@ function App() {
           element={
             <>
               <Header />
-              
+     
+        
               <FlashSalesCarousel />
               < Redicon />
               < Redicons />
