@@ -2,6 +2,8 @@
 
 import React from 'react'
 import { FaGoogle } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+
 
 
 const signup = () => {
@@ -65,8 +67,12 @@ const signup = () => {
   
 </div>
 
-<div className='mt-2' >Already Have an Account? <span className='underline underline-offset-1 cursor-pointer		 ' >Login</span></div>
-
+<div className='mt-2'>
+      Already Have an Account? 
+      <Link to="/login" className='underline underline-offset-1 cursor-pointer'>
+        Login
+      </Link>
+    </div>
 
 
     </div>
