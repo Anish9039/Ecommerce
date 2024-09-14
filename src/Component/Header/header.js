@@ -1,11 +1,11 @@
+"use server"
+
 import React, { useState } from 'react';
 import './header.css'; // External CSS file
 import { IoSearch } from "react-icons/io5";
 import { CiShoppingCart } from "react-icons/ci";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import Ribbon from './ribbon';
-import Sidebar from './Sidebar';
-import Banner from './Banner';
 
 
 
@@ -21,35 +21,12 @@ export default function Header() {
         { name: "Contact", link: "/contact" },
         { name: "About", link: "/about" },
         { name: "Admin", link: "/Aadmin" },
-        { name: "Sign Up", link: "/signup" },
-        { name: "login", link: "/login" }
+        { name: "Sign Up", link: "/signup" }
     ];
 
-    const categories = [
-      "Woman's Fashion",
-      "Men's Fashion",
-      "Electronics",
-      "Home & Lifestyle",
-      "Medicine",
-      "Sports & Outdoor",
-      "Baby's & Toys",
-      "Groceries & Pets",
-      "Health & Beauty",
-    ];
+   
 
-    const bannerData = {
-      logo:"https://i.ibb.co/fxJxzDH/0-02-03-4ec24aefd0a7bb4c6ec6956a0dc0019c4224bb9f10f866a0f7029861df30c7ed-d018eb042fbbd2ac.jpg", // Placeholder logo URL
-      series: "iPhone 14 Series",
-      offer: "Up to 10% off Voucher",
-      link: "/shop",
-      image: "/", // Placeholder product image URL
-      pagination: [
-        { active: false },
-        { active: false },
-        { active: true },
-        { active: false },
-      ],
-    };
+
 
     return (
       <div className=''>
@@ -103,7 +80,7 @@ export default function Header() {
         </nav>
 
         <div style={{ display: 'flex', margin: '7px' }}>
-  
+ 
     </div>
 
         </div>

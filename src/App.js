@@ -8,7 +8,7 @@ import Redicons from './Component/product Category/redicons';
 import Productp from './Component/Popularproduct/Productp';
 import Banner from './Component/Popularproduct/banner';
 import Signup from './Component/signup/signup';
-import Globalheader from './Component/Header/globalheader'
+import Sidebar from './Component/Header/Sidebar'
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <Route path="/aadmin" element={<Aadmin />} />
         <Route path="/Signup" element={
           <>
-            <Globalheader />
+
           <Signup />
           </>
 
@@ -31,7 +31,8 @@ function App() {
           element={
             <>
               <Header />
-     
+              <Sidebar />
+               
         
               <FlashSalesCarousel />
               < Redicon />

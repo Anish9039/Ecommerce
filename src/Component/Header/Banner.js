@@ -1,9 +1,26 @@
 import React from 'react';
 import './Banner.css';
 
-const Banner = ({ bannerData }) => {
+const Banner = () => {
+
+
+  const bannerData = {
+    logo:"https://i.ibb.co/fxJxzDH/0-02-03-4ec24aefd0a7bb4c6ec6956a0dc0019c4224bb9f10f866a0f7029861df30c7ed-d018eb042fbbd2ac.jpg", // Placeholder logo URL
+    series: "iPhone 14 Series",
+    offer: "Up to 10% off Voucher",
+    link: "/shop",
+    image: "/", // Placeholder product image URL
+    pagination: [
+      { active: false },
+      { active: false },
+      { active: true },
+      { active: false },
+    ],
+  };
+
+
   return (
-    <div className="banner">
+  <div className="banner">
       <div className="banner-content">
         <img src={bannerData.logo} alt="Logo" className="banner-logo" />
         <h2>{bannerData.series}</h2>
