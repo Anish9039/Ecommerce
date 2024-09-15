@@ -8,44 +8,59 @@ import Redicons from './Component/product Category/redicons';
 import Productp from './Component/Popularproduct/Productp';
 import Banner from './Component/Popularproduct/banner';
 import Signup from './Component/signup/signup';
-import Sidebar from './Component/Header/Sidebar'
+import Sidebar from './Component/Header/Sidebar';
+import Globalheader from './Component/Header/globalheader';
+import Login from './Component/signup/login';
+
+const AdminLayout = ({ children }) => (
+  <div>
+    <Aadmin />
+    {children}
+  </div>
+);
+
+const MainLayout = ({ children }) => (
+  <>
+    <Globalheader />
+    {children}
+  </>
+);
+
+const RegularLayout = ({ children }) => (
+  <>
+    <Header />
+    <Sidebar />
+    {children}
+  </>
+);
 
 function App() {
   return (
     <Router>
-      
       <Routes>
-        {/* Route for the admin screen */}
-        <Route path="/aadmin" element={<Aadmin />} />
-        <Route path="/Signup" element={
-          <>
+        {/* Admin Route */}
+        <Route path="/aadmin" element={<AdminLayout />} />
 
-          <Signup />
-          </>
+        {/* Signup and Login Routes with Globalheader */}
+        <Route path="/signup" element={<MainLayout><Signup /></MainLayout>} />
+        <Route path="/login" element={<MainLayout><Login /></MainLayout>} />
 
-          } />
-
-        {/* Routes for other parts of the app with Header and other components */}
+        {/* Home Route with Header, Sidebar, and other components */}
         <Route
           path="/"
           element={
-            <>
-              <Header />
-              <Sidebar />
-               
-        
+            <RegularLayout>
               <FlashSalesCarousel />
-              < Redicon />
-              < Redicons />
-              < Productp />
-              <Banner  />
-      
-            </>
+              <Redicon />
+              <Redicons />
+              <Productp />
+              <Banner />
+            </RegularLayout>
           }
         />
-        {/* Add more routes here if needed */}
+        
+        {/* Add more routes as needed */}
       </Routes>
-
     </Router>
   );
 }
