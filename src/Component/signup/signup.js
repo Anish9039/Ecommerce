@@ -13,7 +13,7 @@ const signup = () => {
  
 
 <div class="hidden lg:block text-base			">
-<img class="block mx-auto h-screen sm:mx-0 sm:shrink-0 ml-3 p-1 " src="https://i.imghippo.com/files/jwWlC1725962285.png" alt="Woman's Face" />
+<img class="block mx-auto h-screen sm:mx-0 sm:shrink-0 ml-3 p-1 " src="https://i.ibb.co/bBmWHvY/aaaa.png" alt="Woman's Face" />
 
 </div>
 
