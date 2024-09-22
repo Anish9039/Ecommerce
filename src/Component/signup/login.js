@@ -1,80 +1,89 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { FaGoogle } from "react-icons/fa";
+import axios from 'axios';
 
+const Login = () => {
 
-const login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post('http://localhost:5000/login', { email, password });
+      localStorage.setItem('token', res.data.token);
+      console.log('Login successful');
+    } catch (err) {
+      console.error('Error logging in', err);
+      console.log('Email:', email, 'Password:', password);
+
+    }
+  };
+
   return (
-<div class=" bg-slate-200 grid xl:grid-cols-2 gap-2 p-3">
+    <div className="bg-slate-200 grid xl:grid-cols-2 gap-2 p-3">
+      {/* Left Side Image */}
+      <div className="hidden lg:block text-base">
+        <img 
+          className="block mx-auto h-screen sm:mx-0 sm:shrink-0 ml-3 p-1" 
+          src="https://i.ibb.co/bBmWHvY/aaaa.png" 
+          alt="Woman's Face" 
+        />
+      </div>
 
- 
+      {/* Right Side Form */}
+      <div className="flex justify-center p-6 mt-20">
+        <div>
+          <h1 className="block text text-4xl p-2">Login to Exclusive</h1>
+          <p className="block text-2xl p-2">Enter your details below</p>
 
-<div class="hidden lg:block text-base">
-<img class="block mx-auto h-screen sm:mx-0 sm:shrink-0 ml-3 p-1 " src="https://i.ibb.co/bBmWHvY/aaaa.png" alt="Woman's Face" />
+          <div className="p-3">
+            <form onSubmit={handleLogin}>
+              {/* Email Input */}
+              <label className="relative block mb-4">
+                <span className="sr-only">Email</span>
+                <input
+                  className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                  placeholder="Email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </label>
 
-</div>
+              {/* Password Input */}
+              <label className="relative block mb-4">
+                <span className="sr-only">Password</span>
+                <input
+                  className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                  placeholder="Password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </label>
 
-  <div className='flex justify-center p-6 mt-20'>
-    <div>
-    <h1 className='block text text-4xl p-2' >Login to Exclusive</h1>
-    <p  className='block text-2xl p-2' >Enter your details below</p>
+              {/* Buttons */}
+              <div className="h-10 flex items-center space-x-4">
+                <button
+                  className="bg-red-600 px-4 py-2 font-mono text-white border border-black"
+                  type="submit"
+                >
+                  Login
+                </button>
 
- <div className='p-3'>
-    <form>
-
-
-    <label class="relative block mb-4">
-  <span class="sr-only">Search</span>
-  <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-    <svg class="h-5 w-5 fill-slate-300" viewBox="0 0 20 20"></svg>
-  </span>
-</label>
-
-  <label class="relative block mb-4">
-  <span class="sr-only"></span>
-  <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-    <svg class="h-5 w-5 fill-slate-300" viewBox="0 0 20 20"></svg>
-  </span>
-  <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder="Email Phone" type="email" name="search"/>
-</label>
-
-
-<label class="relative block mb-4">
-  <span class="sr-only">dfsf</span>
-  <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-    <svg class="h-5 w-5 fill-slate-300" viewBox="0 0 20 20"></svg>
-  </span>
-  <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder="password" type="password" name="search"/>
-</label>
-  
-  
-
-    </form>
-
-
-    <div className="h-10 flex items-center space-x-4">
-  <button className="bg-red-600 px-4 py-2 font-mono text-white border border-black">
-    Login
-  </button>
-
-  <button className="px-4 py-2 ml-[-6px] font-mono text-red-600">
-    forgot password?
-  </button>
-</div>
-
-
-
-
-
-
-
-
-
+                <button className="px-4 py-2 ml-[-6px] font-mono text-red-600">
+                  Forgot password?
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
+  );
+};
 
-    </div>
-  </div>
-</div>
-  )
-}
-
-export default login
+export default Login;
