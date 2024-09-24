@@ -65,26 +65,29 @@ app.get('/get', (req, res) => {
 app.post('/signup', async (req, res) => {
   const { username, email, password } = req.body;
 
-
   try {
-    let user = await User.findOne({ email });
-    if (user) {
+    // Check if user already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
       return res.status(400).json({ message: 'User already exists' });
     }
 
-    user = new User({ username, email, password });
-    await user.save();
+    // Create new user
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({ username, email, password: hashedPassword });
+    await newUser.save();
 
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: '1h',
-    });
+    // Generate token
+    const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    res.json({ token, userId: user._id });
+    // Respond with success message and token
+    return res.status(201).json({ message: 'Signup successful', token });
   } catch (error) {
-    alert('user created')
+    console.error('Error during signup:', error);
+    return res.status(500).json({ message: 'Server error', error: error.message });
   }
-
 });
+
 
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
