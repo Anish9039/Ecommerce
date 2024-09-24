@@ -78,10 +78,11 @@ const products = [
 
 const ProductGrid = () => {
   return (
-    
+    // <div className='relative mx-auto max-w-[1170px] h-[768px] pt-[60px'>
+
     <div className="py-10">
     
-    <div className=' rounded-sm	 h-5 w-1 p-4 m-6 bg-red-700	' >
+    <div className=' w-5 h-10 bg-red-600 rounded m-5	' >
       <div className=' ml-5 text-red-600 -mt-3  ' >
         Categories
       </div>
