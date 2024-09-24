@@ -11,6 +11,7 @@ import Signup from './Component/signup/signup';
 import Sidebar from './Component/Header/Sidebar';
 import Globalheader from './Component/Header/globalheader';
 import Login from './Component/signup/login';
+import ProductGrid from './Component/Exploreproduct/ProductGrid';
 
 const AdminLayout = ({ children }) => (
   <div>
@@ -55,6 +56,7 @@ function App() {
               <Redicons />
               <Productp />
               <Banner />
+              <ProductGrid/>
             </RegularLayout>
           }
         />
