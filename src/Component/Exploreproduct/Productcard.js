@@ -3,7 +3,7 @@ import React from 'react';
 
 const ProductCard = ({ image, title, price, rating, reviews, isNew, isBestSeller }) => {
   return (
-    <div className="relative bg-white shadow-md rounded-lg p-4 transition-shadow hover:shadow-lg">
+    <div className= "  relative bg-white shadow-md rounded-lg p-4 transition-shadow hover:shadow-lg">
       {isNew && <span className="absolute top-2 left-2 bg-green-500 text-white text-xs px-2 py-1 rounded">NEW</span>}
       {isBestSeller && <span className="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded">BEST SELLER</span>}
       

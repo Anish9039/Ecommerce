@@ -12,6 +12,9 @@ import Sidebar from './Component/Header/Sidebar';
 import Globalheader from './Component/Header/globalheader';
 import Login from './Component/signup/login';
 import ProductGrid from './Component/Exploreproduct/ProductGrid';
+import { Newarrival } from './Component/New Arrival/Newarrival';
+import ServicesSection from './Servicecard/ServiceSection';
+import Footer from './Footer/Footer';
 
 const AdminLayout = ({ children }) => (
   <div>
@@ -51,13 +54,17 @@ function App() {
           path="/"
           element={
             <RegularLayout>
-              <FlashSalesCarousel />
+              <FlashSalesCarousel class='relative mx-auto max-w-[1170px] h-[768px] pt-[60px]' />
               <Redicon />
               <Redicons />
               <Productp />
               <Banner />
               <ProductGrid/>
+              <Newarrival/>
+              <ServicesSection/>
+              <Footer/>
             </RegularLayout>
+
           }
         />
         

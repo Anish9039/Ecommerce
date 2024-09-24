@@ -28,7 +28,7 @@ const Aadmin = () => {
         axios.post('http://localhost:5000/add', inputs)
             .then(result => {
                 console.log(result);
-                window.location.reload();  
+                
             })
             .catch(err => console.log(err))
     }

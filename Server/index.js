@@ -38,13 +38,20 @@ mongoose.connect('mongodb://127.0.0.1:27017/product',{
 
  
 app.post('/add', (req, res) => {
-  const productData = req.body; // Directly use req.body
+  const { name, image, netRate, discountedRate, rating } = req.body;
 
-  // Create a new product with the data from the request body
-  Products.create(productData)
-      .then(result => res.json(result))
-      .catch(err => res.status(400).json(err)) // Send a 400 error if validation fails
+  if (!name || typeof name !== 'string' || !image || typeof image !== 'string' || 
+      !netRate || netRate <= 0 || !discountedRate || discountedRate <= 0 || 
+      discountedRate > netRate || !rating || rating < 0 || rating > 5) {
+    return res.status(400).json({ message: 'Invalid product data' });
+  }
+
+  // Proceed to save product if validation passes
+  Products.create(req.body)
+    .then(result => res.json(result))
+    .catch(err => res.status(400).json(err));
 });
+
 
  
 app.get('/get', (req, res) => {

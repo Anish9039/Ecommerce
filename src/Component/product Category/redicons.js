@@ -19,7 +19,7 @@ const redicons = () => {
     <div className='  text-end	' >   
 
   
-            <button className='bg-red-700 p-2 m-3 rounded-sm text-white'  >View all product</button>
+      <button className='bg-red-700 p-2 m-3 rounded-sm text-white'  >View all product</button>
 
 
 
