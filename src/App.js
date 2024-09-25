@@ -15,6 +15,8 @@ import ProductGrid from './Component/Exploreproduct/ProductGrid';
 import { Newarrival } from './Component/New Arrival/Newarrival';
 import ServicesSection from './Servicecard/ServiceSection';
 import Footer from './Footer/Footer';
+import {  ToastContainer,toast } from 'react-toastify';
+
 
 const AdminLayout = ({ children }) => (
   <div>
@@ -41,9 +43,12 @@ const RegularLayout = ({ children }) => (
 function App() {
   return (
     <Router>
+              <ToastContainer />
+
       <Routes>
         {/* Admin Route */}
-        <Route path="/aadmin" element={<AdminLayout />} />
+
+        <Route path="/aadmin" element={<AdminLayout><div>Admin Content Here</div></AdminLayout>} />
 
         {/* Signup and Login Routes with Globalheader */}
         <Route path="/signup" element={<MainLayout><Signup /></MainLayout>} />

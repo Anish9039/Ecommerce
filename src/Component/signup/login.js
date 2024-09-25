@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { FaGoogle } from "react-icons/fa";
 import axios from 'axios';
+import { redirect } from 'react-router-dom';
+import {  ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom'; 
 
 const Login = () => {
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -10,10 +15,16 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/login', { email, password });
+      const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
       localStorage.setItem('token', res.data.token);
       console.log('Login successful');
+      toast.success('Login successful! Redirecting to admin...');
+
+      navigate('/aadmin');
+
+      
     } catch (err) {
+      toast.error('Username or password is invalid');
       console.error('Error logging in', err);
       console.log('Email:', email, 'Password:', password);
 
@@ -74,11 +85,13 @@ const Login = () => {
                   Login
                 </button>
 
-                <button className="px-4 py-2 ml-[-6px] font-mono text-red-600">
+                {/* <button className="px-4 py-2 ml-[-6px] font-mono text-red-600">
                   Forgot password?
-                </button>
+                </button> */}
               </div>
             </form>
+            <ToastContainer />
+
           </div>
         </div>
       </div>
