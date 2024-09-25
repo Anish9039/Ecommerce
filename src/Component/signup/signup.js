@@ -1,9 +1,14 @@
 import React, { useState } from 'react';  // Import useState
 import { FaGoogle } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
+import 'react-toastify/dist/ReactToastify.css';
+import {ToastContainer,toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom'; 
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -11,9 +16,13 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/signup', { username, email, password });
+      const res = await axios.post('http://localhost:5000/api/auth/signup', { username, email, password });
       localStorage.setItem('token', res.data.token);
       console.log('Signup successful');
+      toast.success('Login successful! Redirecting to admin...');
+
+      navigate('/login');
+
     } catch (err) {
       // Display more details of the error for debugging
       console.error('Error signing up:', err.response ? err.response.data : err.message);
@@ -106,6 +115,7 @@ const Signup = () => {
                 Login
               </Link>
             </div>
+            <ToastContainer />
 
           </div>
         </div>

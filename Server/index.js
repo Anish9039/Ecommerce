@@ -7,6 +7,9 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const authMiddleware = require('./middleware/mid');
 
+require('dotenv').config();
+
+
 
 
 const app = express();
@@ -19,22 +22,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/product',{
 });
 
 
-
-// router.get('/', async (req, res) => {
-//     try {
-//       const products = await Product.find().populate('category', 'name');
-//       const productsWithDiscount = products.map(product => {
-//         const discountPercentage = Math.round(((product.netRate - product.discountedRate) / product.netRate) * 100);
-//         return {
-//           ...product.toObject(),
-//           discountPercentage
-//         };
-//       });
-//       res.json(productsWithDiscount);
-//     } catch (err) {
-//       res.status(500).json({ message: err.message });
-//     }
-//   });
 
  
 app.post('/add', (req, res) => {
@@ -68,69 +55,14 @@ app.get('/get', (req, res) => {
 //     res.json(products);
 //   });
 
+// Middleware
+app.use(express.json({ extended: false }));
 
-app.post('/signup', async (req, res) => {
-  const { username, email, password } = req.body;
-
-  try {
-    // Check if user already exists
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ message: 'User already exists' });
-    }
-
-    // Create new user
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({ username, email, password: hashedPassword });
-    await newUser.save();
-
-    // Generate token
-    const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-
-    // Respond with success message and token
-    return res.status(201).json({ message: 'Signup successful', token });
-  } catch (error) {
-    console.error('Error during signup:', error);
-    return res.status(500).json({ message: 'Server error', error: error.message });
-  }
-});
-
-
-app.post('/login', async (req, res) => {
-  const { email, password } = req.body;
-
-  try {
-    // Check if the user exists
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(400).json({ message: 'Invalid credentials' });
-    }
-
-    // Compare passwords
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid credentials' });
-    }
-
-    // Generate token
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-
-    // Respond with token and user ID
-    return res.json({ message: 'Login successful', token, userId: user._id });
-  } catch (error) {
-    console.error('Error during login:', error);
-    return res.status(500).json({ message: 'Server error', error: error.message });
-  }
-});
+// Routes
+app.use('/api/auth', require('./Routes/auth.js'));
 
 
 
-
-app.get('/protected', authMiddleware, (req, res) => {
-  res.json({ message: 'You have access to this route' });
-});
-
-  
   app.listen(5000, () => {
     console.log('Server is running on port 5000');
   });
