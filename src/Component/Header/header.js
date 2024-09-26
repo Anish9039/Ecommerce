@@ -6,10 +6,13 @@ import { IoSearch } from "react-icons/io5";
 import { CiShoppingCart } from "react-icons/ci";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import Ribbon from './ribbon';
+import { useCart } from '../Exploreproduct/Cartcontext'
 
 
 
 export default function Header() {
+  const { cartItems } = useCart();
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -59,6 +62,7 @@ export default function Header() {
               <div className="icon-container">
               <div className="icon-wrapper cart-icon">
                 <CiShoppingCart />
+                <span>{cartItems.length}</span> {/* Display number of items */}
               </div>
               <div className="icon-wrapper favorite-icon">
                 <MdOutlineFavoriteBorder />
