@@ -15,16 +15,26 @@ import ProductGrid from './Component/Exploreproduct/ProductGrid';
 import { Newarrival } from './Component/New Arrival/Newarrival';
 import ServicesSection from './Servicecard/ServiceSection';
 import Footer from './Footer/Footer';
-import {  ToastContainer,toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import Product from './Component/Admin/Product';
+import { Navigate, Outlet } from 'react-router-dom';
 
 
-const AdminLayout = ({ children }) => (
+// Authentication check for protected routes
+const ProtectedRoute = ({ element }) => {
+  const isAuthenticated = true; // Replace with real auth logic
+  return isAuthenticated ? element : <Navigate to="/login" />;
+};
+
+// Admin layout that includes the sidebar and space for nested components
+const AdminLayout = () => (
   <div>
     <Aadmin />
-    {children}
+    <Outlet /> {/* This will render nested admin routes */}
   </div>
 );
 
+// Main layout for routes with a global header (Signup/Login pages)
 const MainLayout = ({ children }) => (
   <>
     <Globalheader />
@@ -32,6 +42,7 @@ const MainLayout = ({ children }) => (
   </>
 );
 
+// Regular layout for routes with Header and Sidebar (Home, etc.)
 const RegularLayout = ({ children }) => (
   <>
     <Header />
@@ -43,12 +54,17 @@ const RegularLayout = ({ children }) => (
 function App() {
   return (
     <Router>
-              <ToastContainer />
+      <ToastContainer />
 
       <Routes>
-        {/* Admin Route */}
-
-        <Route path="/aadmin" element={<AdminLayout><div>Admin Content Here</div></AdminLayout>} />
+        {/* Admin Routes with ProtectedRoute */}
+        <Route
+          path="/aadmin"
+          element={<ProtectedRoute element={<AdminLayout />} />}
+        >
+          <Route path="Product" element={<Product />} />
+          {/* Add more nested admin routes here */}
+        </Route>
 
         {/* Signup and Login Routes with Globalheader */}
         <Route path="/signup" element={<MainLayout><Signup /></MainLayout>} />
@@ -59,21 +75,20 @@ function App() {
           path="/"
           element={
             <RegularLayout>
-              <FlashSalesCarousel class='relative mx-auto max-w-[1170px] h-[768px] pt-[60px]' />
+              <FlashSalesCarousel className='relative mx-auto max-w-[1170px] h-[768px] pt-[60px]' />
               <Redicon />
               <Redicons />
               <Productp />
               <Banner />
-              <ProductGrid/>
-              <Newarrival/>
-              <ServicesSection/>
-              <Footer/>
+              <ProductGrid />
+              <Newarrival />
+              <ServicesSection />
+              <Footer />
             </RegularLayout>
-
           }
         />
-        
-        {/* Add more routes as needed */}
+
+        {/* Add more public routes as needed */}
       </Routes>
     </Router>
   );
