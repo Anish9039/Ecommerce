@@ -18,6 +18,9 @@ import Footer from './Footer/Footer';
 import { ToastContainer } from 'react-toastify';
 import Product from './Component/Admin/Product';
 import { Navigate, Outlet } from 'react-router-dom';
+import Cart from './Cart/cart';
+import { CartProvider } from './Component/Exploreproduct/Cartcontext';
+
 
 
 // Authentication check for protected routes
@@ -57,6 +60,9 @@ function App() {
       <ToastContainer />
 
       <Routes>
+      <Route path="/Cart" element={<MainLayout><Cart /></MainLayout>} />
+
+        
         {/* Admin Routes with ProtectedRoute */}
         <Route
           path="/aadmin"
@@ -74,17 +80,24 @@ function App() {
         <Route
           path="/"
           element={
+            <CartProvider>
             <RegularLayout>
               <FlashSalesCarousel className='relative mx-auto max-w-[1170px] h-[768px] pt-[60px]' />
               <Redicon />
               <Redicons />
               <Productp />
               <Banner />
+          
               <ProductGrid />
+              <ToastContainer />
+
+        
               <Newarrival />
               <ServicesSection />
               <Footer />
+            
             </RegularLayout>
+            </CartProvider>
           }
         />
 
