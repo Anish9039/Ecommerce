@@ -1,126 +1,108 @@
-/* src/Dashboard.css */
 .dashboard {
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
-  }
-  
-  .sidebars {
-    width: 200px;
-    background-color: #333;
-    color: white;
-    padding: 20px;
-  }
-  
-  .sidebars ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .sidebars ul li {
-    margin-bottom: 15px;
-    cursor: pointer;
-  }
-  
-  .sidebars ul li:hover {
-    text-decoration: underline;
-  }
-  
-  .content {
-    flex-grow: 1;
-    padding: 20px;
-    background-color: #f4f4f4;
-  }
-  
-  .product-form {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-  }
-  
-  .product-form label {
-    margin-bottom: 10px;
-  }
-  
-  .product-form input,
-  .product-form textarea {
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .product-form button {
-    padding: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .product-form button:hover {
-    background-color: #218838;
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .dashboard {
-      flex-direction: column;
-    }
-  
-    .sidebar {
-      width: 100%;
-      height: auto;
-    }
-  
-    .content {
-      padding: 10px;
-    }
-  
-    .product-form {
-      width: 100%;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .sidebar ul li {
-      margin-bottom: 10px;
-      font-size: 14px;
-    }
-  
-    .product-form input,
-    .product-form textarea {
-      font-size: 14px;
-    }
-  
-    .product-form button {
-      padding: 8px;
-      font-size: 14px;
-    }
-  }
-  
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+}
 
-  .container{
-    position: relative;
-  
-  }
-
-  .form{
-    padding: 3px;
-    margin: 4px;
-  }
+.header {
+  background-color: #4f4f4f; /* Set a header background color */
+  color: white;
+  padding: 15px;
+  text-align: center;
+  width: 100%; /* Make header span full width */
+}
+ 
 
 
-  /* FormStyles.css */
+
+.header-nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;  /* Ensure items in the header align horizontally */
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+
+   /* Center the header menu */
+}
+
+.header-nav ul li {
+  margin: 0 15px;  /* Add some space between menu items */
+}
+
+.header-nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.header-nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Container for sidebar and content */
+.dashboard-body {
+  display: flex;
+  flex: 1; /* Take the remaining space after the header */
+}
+
+.sidebars {
+  background-color: #333;
+  color: white;
+  width: 200px;
+  padding: 20px;
+}
+
+.sidebars ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebars ul li {
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.sidebars ul li:hover {
+  background-color: #555;
+}
+
+/* Content section */
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f4f4f4; /* Light grey background for the content area */
+  color: #000;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Optional: Styling the form */
+.form-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.submit-button {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
 
 .form-container {
   background-color: #f9f9f9; /* Light gray background */
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  max-width: 400px; /* Set a max width for the form */
-  margin: 0 auto; /* Center the form on the page */
 }
 
 .form-title {
@@ -153,18 +135,27 @@
   outline: none; /* Remove default outline */
 }
 
-.submit-button {
-  width: 100%; /* Full width for button */
-  padding: 10px; /* Space inside the button */
-  background-color: #007bff; /* Bootstrap primary color */
-  color: white; /* White text color */
-  border: none; /* Remove border */
-  border-radius: 4px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  font-size: 16px; /* Larger text for the button */
-  transition: background-color 0.3s; /* Smooth transition for background color */
+.logo{
+  object-fit: cover;
 }
 
-.submit-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+.logo img{
+
+  width: 5rem;
+  height: 3vh;
+  
+  max-width: 100px; 
+
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Home{
+  position: relative;
+  display: flex;
+  left: -35%;
 }
