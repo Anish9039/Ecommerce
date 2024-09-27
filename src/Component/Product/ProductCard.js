@@ -4,13 +4,16 @@ import './ProductCard.css';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { FaHeart, FaSyncAlt, FaShoppingCart } from 'react-icons/fa';
+import { useCart } from '../Exploreproduct/Cartcontext';
+
 
 const ProductCard = ({ product }) => {
   const [hovered, setHovered] = useState(false);
-
+  const { addToCart } = useCart();
 
   
   return (
+    
     <div 
       className="product-card" 
       onMouseEnter={() => setHovered(true)} 
@@ -20,10 +23,13 @@ const ProductCard = ({ product }) => {
         {/* Display the product image */}
         <img src={product.image} alt={product.name} className="product-image" />
 
+     
+    
+
         {hovered && (
           <>
-            <button className="add-to-cart-btn">
-              <FaShoppingCart /> Add To Cart
+            <button onClick={() => addToCart(product)} className="add-to-cart-btn" >
+              <FaShoppingCart   /> Add To Cart
             </button>
             <button className="icon-btn">
               <FaHeart />
@@ -77,8 +83,8 @@ const ProductList = () => {
   return (
     <div className="product-list">
       {/* Map over the fetched products and render a ProductCard for each */}
-      {fetchedProducts.map((product, index) => (
-        <ProductCard key={index} product={product} />
+      {fetchedProducts.map((product, _id) => (
+        <ProductCard key={_id} product={product}   />
       ))}
     </div>
   );

@@ -61,8 +61,8 @@ export default function Header() {
 
               <div className="icon-container">
               <div className="icon-wrapper cart-icon">
-                <CiShoppingCart />
-                <span>{cartItems.length}</span> {/* Display number of items */}
+                <CiShoppingCart link='http://localhost:3000/cart'  />
+                <span  >{cartItems.length}</span> {/* Display number of items */}
               </div>
               <div className="icon-wrapper favorite-icon">
                 <MdOutlineFavoriteBorder />

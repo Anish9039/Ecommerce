@@ -33,7 +33,9 @@ export const CartProvider = ({ children }) => {
     });
 
     // Show success message
-    toast.success(`${product.title} has been added to the cart!`);
+    // toast.success(`${product.title} has been added to the cart!`);
+    toast.success(`${product.name} has been added to the cart!`);
+
   };
   
 
