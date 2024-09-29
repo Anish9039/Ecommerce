@@ -2,6 +2,7 @@
 import React from 'react';
 import ProductCard from './Productcard';
 import { useCart } from './Cartcontext';
+import { cartItems } from './Cartcontext';
 
 const products = [
   {

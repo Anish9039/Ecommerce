@@ -7,6 +7,7 @@ import { CiShoppingCart } from "react-icons/ci";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import Ribbon from './ribbon';
 import { useCart } from '../Exploreproduct/Cartcontext'
+import { Link } from 'react-router-dom';
 
 
 
@@ -61,7 +62,9 @@ export default function Header() {
 
               <div className="icon-container">
               <div className="icon-wrapper cart-icon">
-                <CiShoppingCart link='http://localhost:3000/cart'  />
+                  <Link to="/cart">
+            <CiShoppingCart />
+          </Link>
                 <span  >{cartItems.length}</span> {/* Display number of items */}
               </div>
               <div className="icon-wrapper favorite-icon">

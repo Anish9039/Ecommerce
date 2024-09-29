@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useCart } from '../Exploreproduct/Cartcontext'; // Import CartContext to use the cart data
+
 
 // Styled components
 const Container = styled.div`
@@ -120,20 +122,38 @@ const TotalRow = styled.div`
   justify-content: space-between;
   padding: 5px 0;
   font-size: 16px;
-  gap: 4;
-   border: 1px solid black;
-  border-radius: 1px;
 `;
 
 const CheckoutButton = styled(UpdateButton)`
   padding: 10px;
   text-align: center;
   width: 100%;
-  
 `;
 
 // Main Component
 const Cart = () => {
+  const { cartItems, setCartItems } = useCart();
+
+
+  console.log('setCartItems in Cart.js:', setCartItems);
+
+
+  // Handler to update the quantity of a cart item
+  const handleQuantityChange = (e, id) => {
+    const newQuantity = parseInt(e.target.value);
+
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, quantity: newQuantity } : item
+      )
+    );
+  };
+
+  // Calculate the subtotal based on the cart items
+  const calculateSubtotal = () => {
+    return cartItems.reduce((total, item) => total + item.netRate * item.quantity, 0);
+  };
+
   return (
     <Container>
       <Table>
@@ -146,31 +166,33 @@ const Cart = () => {
           </tr>
         </thead>
         <tbody>
-          <TableRow>
-            <TableCell><ProductImage src="monitor.png" alt="LCD Monitor" /></TableCell>
-            <TableCell>$650</TableCell>
-            <TableCell>
-              <QuantitySelect>
-                <option value="1">01</option>
-                <option value="2">02</option>
-                <option value="3">03</option>
-              </QuantitySelect>
-            </TableCell>
-            <TableCell>$650</TableCell>
-          </TableRow>
-
-          <TableRow>
-            <TableCell><ProductImage src="gamepad.png" alt="Gamepad" /></TableCell>
-            <TableCell>$550</TableCell>
-            <TableCell>
-              <QuantitySelect>
-                <option value="1">01</option>
-                <option value="2">02</option>
-                <option value="3">03</option>
-              </QuantitySelect>
-            </TableCell>
-            <TableCell>$1100</TableCell>
-          </TableRow>
+          {cartItems.length === 0 ? (
+            <TableRow>
+              <TableCell colSpan="4">Your cart is empty.</TableCell>
+            </TableRow>
+          ) : (
+            cartItems.map((item, index) => (
+              <TableRow key={index}>
+                <TableCell>
+                  <ProductImage src={item.image} alt={item.name} />
+                </TableCell>
+                <TableCell>${item.netRate}</TableCell>
+                <TableCell>
+                  <QuantitySelect
+                    value={item.quantity}
+                    onChange={(e) => handleQuantityChange(e, item.id)}  // Attach handler here
+                  >
+                    {[...Array(10).keys()].map(num => (
+                      <option key={num + 1} value={num + 1}>
+                        {num + 1}
+                      </option>
+                    ))}
+                  </QuantitySelect>
+                </TableCell>
+                <TableCell>${item.netRate * item.quantity}</TableCell>
+              </TableRow>
+            ))
+          )}
         </tbody>
       </Table>
 
@@ -184,11 +206,10 @@ const Cart = () => {
         <ApplyButton>Apply Coupon</ApplyButton>
       </CouponSection>
 
-      <CartTotalSection  >
+      <CartTotalSection>
         <TotalRow>
           <span>Subtotal:</span>
-          <br></br>
-          <span>$1750</span>
+          <span>${calculateSubtotal()}</span>
         </TotalRow>
         <TotalRow>
           <span>Shipping:</span>
@@ -196,11 +217,10 @@ const Cart = () => {
         </TotalRow>
         <TotalRow>
           <strong>Total:</strong>
-          <strong>$1750</strong>
+          <strong>${calculateSubtotal()}</strong>
         </TotalRow>
         <CheckoutButton>Proceed to Checkout</CheckoutButton>
       </CartTotalSection>
-
     </Container>
   );
 };
