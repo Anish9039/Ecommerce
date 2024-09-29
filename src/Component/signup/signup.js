@@ -1,3 +1,5 @@
+'use server'
+
 import React, { useState } from 'react';  // Import useState
 import { FaGoogle } from "react-icons/fa";
 import { Link, Navigate } from 'react-router-dom';
@@ -19,7 +21,7 @@ const Signup = () => {
       const res = await axios.post('http://localhost:5000/api/auth/signup', { username, email, password });
       localStorage.setItem('token', res.data.token);
       console.log('Signup successful');
-      toast.success('Login successful! Redirecting to admin...');
+      toast.success('User created sucessfully');
 
       navigate('/login');
 

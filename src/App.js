@@ -18,7 +18,7 @@ import Footer from './Footer/Footer';
 import { ToastContainer } from 'react-toastify';
 import Product from './Component/Admin/Product';
 import { Navigate, Outlet } from 'react-router-dom';
-import Cart from './Cart/cart';
+import Cart from './Component/Cart/cart';
 import { CartProvider } from './Component/Exploreproduct/Cartcontext';
 
 
@@ -60,7 +60,24 @@ function App() {
       <ToastContainer />
 
       <Routes>
-      <Route path="/Cart" element={<MainLayout><Cart /></MainLayout>} />
+      
+
+    
+      <Route path="/Cart" element={
+
+<CartProvider>
+        
+        <MainLayout>
+
+       
+        <Cart />   
+
+
+        </MainLayout>
+        </CartProvider>
+
+        } />
+  
 
         
         {/* Admin Routes with ProtectedRoute */}
