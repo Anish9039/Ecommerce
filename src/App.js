@@ -20,6 +20,7 @@ import Product from './Component/Admin/Product';
 import { Navigate, Outlet } from 'react-router-dom';
 import Cart from './Component/Cart/cart';
 import { CartProvider } from './Component/Exploreproduct/Cartcontext';
+import Maindetail from './Component/Billing/Maindetail';
 
 
 
@@ -61,7 +62,11 @@ function App() {
 
       <Routes>
       
-
+<Route path="/maindetail" element={
+   <MainLayout>
+      <Maindetail/>
+   </MainLayout>
+}/>
     
       <Route path="/Cart" element={
 
@@ -112,8 +117,10 @@ function App() {
               <Newarrival />
               <ServicesSection />
               <Footer />
+
             
             </RegularLayout>
+        
             </CartProvider>
           }
         />
