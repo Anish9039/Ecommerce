@@ -1,16 +1,18 @@
-import React from 'react'
-import Billingdetail from './Billingdetail'
-import Order from './Order'
+import React from 'react';
+import Billingdetail from './Billingdetail';
+import Order from './Order';
 
 function Maindetail() {
   return (
-    <div className=" grid grid-rows-3 grid-flow-col gap-4">
-        <div class="row-span-3 "> <Billingdetail /></div>
-        <div class="row-span-3 ">   <Order /></div>
-
-  
-  </div>
-  )
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+      <div className="w-full"> 
+        <Billingdetail />
+      </div>
+      <div className="w-full">
+        <Order />
+      </div>
+    </div>
+  );
 }
 
-export default Maindetail
+export default Maindetail;

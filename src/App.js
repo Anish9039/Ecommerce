@@ -42,7 +42,11 @@ const AdminLayout = () => (
 const MainLayout = ({ children }) => (
   <>
     <Globalheader />
+
+
     {children}
+<br></br>
+    <Footer />
   </>
 );
 

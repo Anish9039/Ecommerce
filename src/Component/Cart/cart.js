@@ -35,7 +35,6 @@ const TableRow = styled.tr`
 
 const TableCell = styled.td`
   padding: 15px;
-  text-align: center;
   vertical-align: middle;
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
