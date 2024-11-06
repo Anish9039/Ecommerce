@@ -58,7 +58,7 @@ const Footer = () => {
           {/* Download App */}
           <div className="flex flex-col space-y-6">
             <h3 className="text-lg font-medium">Download App</h3>
-            <p className="text-sm opacity-70">Save $3 with App New User Only</p>
+            <p className="text-sm opacity-70">Save rs3 with App New User Only</p>
             <div className="flex items-center gap-4">
               <div className="w-20 h-20 bg-white flex justify-center items-center">
                 {/* QR Code */}
@@ -81,7 +81,7 @@ const Footer = () => {
           <i className="fa fa-twitter"></i>
           <i className="fa fa-linkedin"></i>
         </div>
-        <p className="ml-4">© Rimel 2022. All rights reserved</p>
+        <p className="ml-4">© Anish 2022. All rights reserved</p>
       </div>
     </footer>
   );
