@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useCart } from '../Exploreproduct/Cartcontext'; // Import CartContext to use the cart data
+import { Link } from 'react-router-dom';
 
 
 // Styled components
@@ -218,7 +219,9 @@ const Cart = () => {
           <strong>Total:</strong>
           <strong>${calculateSubtotal()}</strong>
         </TotalRow>
-        <CheckoutButton>Proceed to Checkout</CheckoutButton>
+        <Link to="/maindetail">   <CheckoutButton  >Proceed to Checkout</CheckoutButton></Link> 
+       
+
       </CartTotalSection>
     </Container>
   );
