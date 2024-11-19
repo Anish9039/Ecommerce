@@ -17,19 +17,25 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (product) => {
     setCartItems((prevItems) => {
+      console.log("Previous Cart State:", prevItems); // Log current state
       const existingItem = prevItems.find((item) => item.id === product.id);
-      
+  
       if (existingItem) {
-        return prevItems.map((item) =>
+        const updatedCart = prevItems.map((item) =>
           item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
         );
+        console.log("Updated Cart State (Existing):", updatedCart); // Log after update
+        return updatedCart;
       } else {
-        return [...prevItems, { ...product, quantity: 1 }];
+        const newCart = [...prevItems, { ...product, quantity: 1 }];
+        console.log("Updated Cart State (New Item):", newCart); // Log after adding
+        return newCart;
       }
     });
-
+  
     toast.success(`${product.name} has been added to the cart!`);
   };
+  
 
   const removeFromCart = (id) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
