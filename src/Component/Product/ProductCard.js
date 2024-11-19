@@ -42,7 +42,7 @@ const ProductCard = ({ product }) => {
       </div>
       <div className="product-info">
         <h3>{product.name}</h3>
-        <p className="price">
+        <p className="price"> 
           <span className="discounted-price">${product.discountedRate}</span>
           <span className="original-price">${product.originalPrice}</span>
         </p>
