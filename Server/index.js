@@ -6,24 +6,29 @@ const User = require('./Models/auth.js');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const authMiddleware = require('./middleware/mid');
-
+const billing = require('./Routes/Billing.js');  // Correct import of the billing route
 require('dotenv').config();
-
-
-
 
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
+// MongoDB connection
+mongoose.connect('mongodb://127.0.0.1:27017/product', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.error('MongoDB connection error:', err));
 
-mongoose.connect('mongodb://127.0.0.1:27017/product',{
-});
 
+// Routes
+app.use('/api/auth', require('./Routes/auth.js'));  // Your authentication routes
+app.use('/api/billing', billing); // Ensure this is correct
 
-
- 
+// Example: Add product route
 app.post('/add', (req, res) => {
   const { name, image, netRate, discountedRate, rating } = req.body;
 
@@ -39,31 +44,16 @@ app.post('/add', (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
-
- 
+// Example: Get products route
 app.get('/get', (req, res) => {
   const productData = req.body; // Directly use req.body
 
-  // Create a new product with the data from the request body
   Products.find(productData)
       .then(result => res.json(result))
-      .catch(err => res.status(400).json(err)) // Send a 400 error if validation fails
+      .catch(err => res.status(400).json(err)); // Send a 400 error if validation fails
 });
 
-// app.get('/products', async (req, res) => {
-//     const products = await Product.find();
-//     res.json(products);
-//   });
-
-// Middleware
-app.use(express.json({ extended: false }));
-
-// Routes
-app.use('/api/auth', require('./Routes/auth.js'));
-
-
-
-  app.listen(5000, () => {
-    console.log('Server is running on port 5000');
-  });
-
+// Start the server
+app.listen(5000, () => {
+  console.log('Server is running on port 5000');
+});

@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './Component/Header/header';
 import FlashSalesCarousel from './Component/Product/FlashSalesCarousel';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate, Outlet } from 'react-router-dom';
 import Aadmin from './Component/Admin/Aadmin';
 import Redicon from './Component/product Category/redIcon';
 import Redicons from './Component/product Category/redicons';
@@ -17,12 +17,9 @@ import ServicesSection from './Servicecard/ServiceSection';
 import Footer from './Footer/Footer';
 import { ToastContainer } from 'react-toastify';
 import Product from './Component/Admin/Product';
-import { Navigate, Outlet } from 'react-router-dom';
 import Cart from './Component/Cart/cart';
 import { CartProvider } from './Component/Exploreproduct/Cartcontext';
 import Maindetail from './Component/Billing/Maindetail';
-
-
 
 // Authentication check for protected routes
 const ProtectedRoute = ({ element }) => {
@@ -42,10 +39,8 @@ const AdminLayout = () => (
 const MainLayout = ({ children }) => (
   <>
     <Globalheader />
-
-
     {children}
-<br></br>
+    <br />
     <Footer />
   </>
 );
@@ -61,77 +56,68 @@ const RegularLayout = ({ children }) => (
 
 function App() {
   return (
-    <Router>
-      <ToastContainer />
+    // Wrap the entire app with CartProvider to make cart context available globally
+    <CartProvider>
+      <Router>
+        <ToastContainer />
 
-      <Routes>
-      
-<Route path="/maindetail" element={
-   <MainLayout>
-      <Maindetail/>
-   </MainLayout>
-}/>
-    
-      <Route path="/Cart" element={
+        <Routes>
+          {/* Billing Details Route */}
+          <Route
+            path="/maindetail"
+            element={
+              <MainLayout>
+                <Maindetail />
+              </MainLayout>
+            }
+          />
 
-<CartProvider>
-        
-        <MainLayout>
+          {/* Cart Route */}
+          <Route
+            path="/Cart"
+            element={
+              <MainLayout>
+                <Cart />
+              </MainLayout>
+            }
+          />
 
-       
-        <Cart />   
+          {/* Admin Routes with ProtectedRoute */}
+          <Route
+            path="/aadmin"
+            element={<ProtectedRoute element={<AdminLayout />} />}
+          >
+            <Route path="Product" element={<Product />} />
+            {/* Add more nested admin routes here */}
+          </Route>
 
+          {/* Signup and Login Routes with Globalheader */}
+          <Route path="/signup" element={<MainLayout><Signup /></MainLayout>} />
+          <Route path="/login" element={<MainLayout><Login /></MainLayout>} />
 
-        </MainLayout>
-        </CartProvider>
+          {/* Home Route with Header, Sidebar, and other components */}
+          <Route
+            path="/"
+            element={
+              <RegularLayout>
+                <FlashSalesCarousel className="relative mx-auto max-w-[1170px] h-[768px] pt-[60px]" />
+                <Redicon />
+                <Redicons />
+                <Productp />
+                <Banner />
+                <ProductGrid />
+                <ToastContainer />
+                <Newarrival />
+                <ServicesSection />
+                <Footer />
+              </RegularLayout>
+            }
+          />
 
-        } />
-  
-
-        
-        {/* Admin Routes with ProtectedRoute */}
-        <Route
-          path="/aadmin"
-          element={<ProtectedRoute element={<AdminLayout />} />}
-        >
-          <Route path="Product" element={<Product />} />
-          {/* Add more nested admin routes here */}
-        </Route>
-
-        {/* Signup and Login Routes with Globalheader */}
-        <Route path="/signup" element={<MainLayout><Signup /></MainLayout>} />
-        <Route path="/login" element={<MainLayout><Login /></MainLayout>} />
-
-        {/* Home Route with Header, Sidebar, and other components */}
-        <Route
-          path="/"
-          element={
-            <CartProvider>
-            <RegularLayout>
-              <FlashSalesCarousel className='relative mx-auto max-w-[1170px] h-[768px] pt-[60px]' />
-              <Redicon />
-              <Redicons />
-              <Productp />
-              <Banner />
-          
-              <ProductGrid />
-              <ToastContainer />
-
-        
-              <Newarrival />
-              <ServicesSection />
-              <Footer />
-
-            
-            </RegularLayout>
-        
-            </CartProvider>
-          }
-        />
-
-        {/* Add more public routes as needed */}
-      </Routes>
-    </Router>
+          {/* Add more public routes as needed */}
+        </Routes>
+      </Router>
+    </CartProvider>
   );
 }
 
