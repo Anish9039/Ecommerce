@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useCart } from '../Exploreproduct/Cartcontext'; // Import CartContext to use the cart data
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Maindetail from '../Billing/Maindetail';
 
 
 
@@ -9,6 +10,12 @@ import { Link } from 'react-router-dom';
 const Cart = () => {
   const { cartItems, setCartItems } = useCart();
 
+  const navigate = useNavigate();
+
+
+  const proceedToBilling = () => {
+    navigate('/maindetail'); // Navigate to Billing Details
+  };
 
   console.log('setCartItems in Cart.js:', setCartItems);
 
@@ -189,7 +196,7 @@ width: 100%;
                       <option key={num + 1} value={num + 1}>
                         {num + 1}
                       </option>
-                    ))}
+                    ))} 
                   </QuantitySelect>
                 </TableCell>
                 <TableCell>${item.netRate * item.quantity}</TableCell>
@@ -222,7 +229,7 @@ width: 100%;
           <strong>Total:</strong>
           <strong>${calculateSubtotal()}</strong>
         </TotalRow>
-        <Link to="/maindetail">   <CheckoutButton  >Proceed to Checkout</CheckoutButton></Link> 
+         <CheckoutButton  onClick={proceedToBilling} >Proceed to Checkout</CheckoutButton>
        
 
       </CartTotalSection>
