@@ -11,7 +11,7 @@ export const useCart = () => {
     }
     return context;
 };
-
+ 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
