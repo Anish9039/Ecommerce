@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 
 
 const Billingdetail = ({ onSubmit }) => {
@@ -34,7 +34,7 @@ const Billingdetail = ({ onSubmit }) => {
   
       if (response.status === 201) {
         console.log('Billing details submitted successfully:', response.data);
-  
+
         // Set the order information
         setOrderInfo({
           orderId: response.data.orderId, // Get the order ID from response
@@ -43,7 +43,7 @@ const Billingdetail = ({ onSubmit }) => {
   
         // Display success toast notification
         toast.success(`Your order has been placed! Order ID: ${response.data.orderId}`);
-  
+
         // Optionally, you can call onSubmit if needed
         if (onSubmit) {
           onSubmit(billingDetails);
@@ -53,6 +53,8 @@ const Billingdetail = ({ onSubmit }) => {
       console.error('Error submitting billing details:', error);
       toast.error('Failed to submit billing details.');
     }
+ 
+
   };
   
 
