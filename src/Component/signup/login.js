@@ -32,7 +32,7 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-slate-200 grid xl:grid-cols-2 gap-2 p-3">
+    <div className=" container bg-slate-200 grid xl:grid-cols-2 gap-2 p-3">
       {/* Left Side Image */}
       <div className="hidden lg:block text-base">
         <img 

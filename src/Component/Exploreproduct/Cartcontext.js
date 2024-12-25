@@ -15,27 +15,43 @@ export const useCart = () => {
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
+  // const addToCart = (product) => {
+  //   setCartItems((prevItems) => {
+  //     const existingItem = prevItems.find((item) => item.id === product.id);
+  //     if (existingItem) {
+  //       return prevItems.map((item) =>
+  //         item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+  //       );
+  //     }
+  //     return [...prevItems, { ...product, quantity: 1 }];
+  //   });
+  
+  //   toast.success(`${product.name} added to the cart!`);
+  // };
+  
   const addToCart = (product) => {
     setCartItems((prevItems) => {
-      console.log("Previous Cart State:", prevItems); // Log current state
       const existingItem = prevItems.find((item) => item.id === product.id);
   
       if (existingItem) {
-        const updatedCart = prevItems.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        console.log("Updating existing product:", existingItem);
+        return prevItems.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
         );
-        console.log("Updated Cart State (Existing):", updatedCart); // Log after update
-        return updatedCart;
       } else {
-        const newCart = [...prevItems, { ...product, quantity: 1 }];
-        console.log("Updated Cart State (New Item):", newCart); // Log after adding
-        return newCart;
+        console.log("Adding new product:", product);
+        return [...prevItems, { ...product, quantity: 1 }];
       }
     });
-  
-    toast.success(`${product.name} has been added to the cart!`);
+    toast.success(`${product.name} added to the cart!`);
+
   };
   
+
+
+
 
   const removeFromCart = (id) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
