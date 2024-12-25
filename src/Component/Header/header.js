@@ -14,6 +14,9 @@ import { Link } from 'react-router-dom';
 export default function Header() {
   const { cartItems } = useCart();
 
+  const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -65,7 +68,7 @@ export default function Header() {
                   <Link to="/cart">
             <CiShoppingCart />
           </Link>
-                <span  >{cartItems.length}</span> {/* Display number of items */}
+                <span  >{totalItems}</span> {/* Display number of items */}
               </div>
               <div className="icon-wrapper favorite-icon">
                 <MdOutlineFavoriteBorder />

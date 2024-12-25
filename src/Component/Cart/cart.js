@@ -17,7 +17,6 @@ const Cart = () => {
     navigate('/maindetail'); // Navigate to Billing Details
   };
 
-  console.log('setCartItems in Cart.js:', setCartItems);
 
 
   // Handler to update the quantity of a cart item
@@ -182,8 +181,8 @@ width: 100%;
             </TableRow>
           ) : (
             cartItems.map((item, index) => (
-              <TableRow key={index}>
-                <TableCell>
+              <TableRow key={item.id}>
+                <TableCell> 
                   <ProductImage src={item.image} alt={item.name} />
                 </TableCell>
                 <TableCell>${item.netRate}</TableCell>

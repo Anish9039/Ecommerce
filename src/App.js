@@ -20,6 +20,7 @@ import Product from './Component/Admin/Product';
 import Cart from './Component/Cart/cart';
 import { CartProvider } from './Component/Exploreproduct/Cartcontext';
 import Maindetail from './Component/Billing/Maindetail';
+import Profile from './Component/Profile/profile'
 
 // Authentication check for protected routes
 const ProtectedRoute = ({ element }) => {
@@ -78,6 +79,7 @@ function App() {
             element={
               <MainLayout>
                 <Cart />
+                
               </MainLayout>
             }
           />
@@ -103,7 +105,7 @@ function App() {
                 <FlashSalesCarousel className="relative mx-auto max-w-[1170px] h-[768px] pt-[60px]" />
                 <Redicon />
                 <Redicons />
-                <Productp />
+                <Productp className="container" />
                 <Banner />
                 <ProductGrid />
                 <ToastContainer />
@@ -111,7 +113,7 @@ function App() {
                 <ServicesSection />
                 <Footer />
               </RegularLayout>
-            }
+                 }
           />
 
           {/* Add more public routes as needed */}
